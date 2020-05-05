@@ -1,0 +1,28 @@
+# Sudo is required for running Docker
+sudo: required
+
+services:
+  - docker
+
+git:
+  depth: 1
+
+language: go
+
+go:
+  - "1.13"
+
+before_install:
+  - go version
+  - go env
+
+script:
+  # Build
+  - go build -v binary/... debug/... sql/...
+  # Start Apache Ignite server in Docker container
+  - docker run -d --rm --name ignite -v $(pwd)/testdata/:/tmp/testdata -v $(pwd)/testdata/configuration-for-tests.xml:/opt/ignite/apache-ignite/config/default-config.xml --network host apacheignite/ignite
+  - sleep 15s
+  - docker logs ignite
+  - docker exec -it ignite apache-ignite/bin/control.sh --activate --user ignite --password ignite
+  # Test
+  - go test -v -race ./...
