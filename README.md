@@ -1,5 +1,6 @@
 # ignite-go-client
 
+[![Build Status](https://travis-ci.org/wiifit/ignite-go-client.svg?branch=feature%2Ftravis-ci)](https://travis-ci.org/wiifit/ignite-go-client)
 [![GoDoc](https://www.godoc.org/github.com/amsokol/ignite-go-client?status.svg)](https://www.godoc.org/github.com/amsokol/ignite-go-client)
 [![GitHub release](https://img.shields.io/github/release/amsokol/ignite-go-client.svg)](https://github.com/amsokol/ignite-go-client/releases)
 [![GitHub issues](https://img.shields.io/github/issues/amsokol/ignite-go-client.svg)](https://github.com/amsokol/ignite-go-client/issues)
